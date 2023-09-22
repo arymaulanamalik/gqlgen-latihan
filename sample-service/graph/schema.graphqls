@@ -1,0 +1,25 @@
+type Query {
+    cartList: Cart!
+}
+
+union CartListResponse = Cart | GenericError
+
+type Cart {
+    items: [CartItem!]!
+}
+
+type CartItem {
+    qty: String!
+    notes: String!
+    product: Product!
+}
+
+type Product {
+    id: ID!
+    name: String!
+}
+
+type GenericError {
+  code: String!
+  message: String
+}

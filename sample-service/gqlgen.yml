@@ -1,0 +1,39 @@
+# Where are all the schema files located? globs are supported eg  src/**/*.graphqls
+schema:
+  - graph/*.graphqls
+
+# Enable Apollo federation support
+federation:
+  filename: graph/federation.go
+  package: graph
+
+# Where should the generated server code go?
+exec:
+  filename: graph/generated.go
+  package: graph
+
+# Where should any generated models go?
+model:
+  filename: graph/model/models_gen.go
+  package: model
+  # Optional: Pass in a path to a new gotpl template to use for generating the models
+  # model_template: [your/path/model.gotpl]
+
+
+# Where should the resolver implementations go?
+resolver:
+  layout: follow-schema
+  dir: graph
+  package: graph
+
+# gqlgen will search for any type names in the schema in these go packages
+# if they match it will use them, otherwise it will generate them.
+# autobind:
+#   - "github.com/arymaulanamalik/gqlgen-latihan/sample-service"
+
+
+models:
+  Decimal:
+    model: github.com/arymaulanamalik/gqlgen-latihan/sample-service/graphql/utils.Decimal
+  Float32:
+    model: github.com/arymaulanamalik/gqlgen-latihan/sample-service/graphql/utils.Float32
